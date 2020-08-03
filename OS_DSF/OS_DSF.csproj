@@ -495,6 +495,10 @@
     <Compile Include="UC\UC_YEAR_SELECTION.Designer.cs">
       <DependentUpon>UC_YEAR_SELECTION.cs</DependentUpon>
     </Compile>
+    <Compile Include="WaitForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForm1.Designer.cs" />
     <EmbeddedResource Include="DIGITAL_SHOP_FLOOR.resx">
       <DependentUpon>DIGITAL_SHOP_FLOOR.cs</DependentUpon>
     </EmbeddedResource>
@@ -668,6 +672,7 @@
     <EmbeddedResource Include="UC\UC_YEAR_SELECTION.resx">
       <DependentUpon>UC_YEAR_SELECTION.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm1.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
