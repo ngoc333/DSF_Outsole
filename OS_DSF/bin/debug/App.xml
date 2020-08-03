@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<computer>
+  <!--TV 4-->
+	<form>
+		
+		<monitor>computer</monitor>
+		<WH_CD>20</WH_CD>
+	</form>
+
+<!--	
+	<monitor>TV</monitor>
+		<monitor>Touch</monitor>
+
+			<name>FORM_OSD_OEE_SYNTHESIZE</name>
+	<form>
+		<name>FORM_LEAD_TIME</name>
+		<monitor>0</monitor>
+	</form>
+
+	<form>
+		<name>FORM_IP_CHAMBER_ZONE</name>
+		<monitor>0</monitor>
+	</form>
+  
+	<form>
+		<name>FORM_MOLD_REPAIR_WEEKLY</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FORM_OSD_OEE_SYNTHESIZE</name>
+		<monitor>0</monitor>
+	</form>
+	
+	
+	
+	
+	
+	<form>
+		<name>FORM_ROLL_DATA_TRACKING_V3</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FORM_KNEADER_TEMPERATURE_STATUS</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FORM_TEMPERATURE_STATUS</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FRM_TEMP</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FORM_MOLD_REPAIR_WEEKLY</name>
+		<monitor>0</monitor>
+	</form>
+
+
+
+	
+	
+	<form>
+		<name>FRM_BLENDING_LOCATION_5</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FORM_MOLD_CHANGE</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FORM_MOLD_CLEANING</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FORM_MOLD_REPAIR_DAILY</name>
+		<monitor>0</monitor>
+	</form>
+
+	
+	
+	<form>
+		<name>FORM_MOLD_REPAIR_MONTHLY</name>
+		<monitor>0</monitor>
+	</form>
+ 	
+	
+ 
+	<form>
+		<name>FORM_IP_CHAMBER_ZONE</name>
+		<monitor>0</monitor>
+	</form>
+
+    <form>
+		<name>FORM_IPEX3_LOGISTIC</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FRM_BLENDING_LOCATION_5</name>
+		<monitor>0</monitor>
+	</form>
+
+	<form>
+		<name>FRM_TEMP</name>
+		<monitor>0</monitor>
+	</form>
+
+	<form>
+		<name>FORM_MOLD_CHANGE</name>
+		<monitor>0</monitor>
+	</form>
+	
+	<form>
+		<name>FORM_MOLD_CLEANING</name>
+		<monitor>0</monitor>
+	</form>
+	  
+	<form>
+		<name>FORM_MOLD_REPAIR_DAILY</name>
+		<monitor>0</monitor>
+	</form>
+	-->
+  
+</computer>

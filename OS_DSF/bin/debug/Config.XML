@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<db>
+  <Item>
+    <LOC>1</LOC>
+    <OldCode>Phuc</OldCode>
+    <NewCode>Phong</NewCode>
+    <Name>Phuoc</Name>
+<Office_YN>2Y</Office_YN>
+  </Item>
+</db>
