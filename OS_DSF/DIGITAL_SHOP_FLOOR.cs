@@ -16,6 +16,8 @@ namespace OS_DSF
         public DIGITAL_SHOP_FLOOR()
         {
             InitializeComponent();
+
+            //sngoc.it
         }
         #region UserControl
         UC.UC_MENU_OS UC_MENU = new UC.UC_MENU_OS("MENU");
