@@ -16,6 +16,7 @@ namespace OS_DSF.UC
             InitializeComponent();
             //lblTitle.Text = Title;
             bsVQuality.Selected = true;
+           
         }
         #region Variable
         string _MenuName = "bsVQuality";

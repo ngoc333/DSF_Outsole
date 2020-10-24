@@ -93,8 +93,8 @@
             this.bsView.ItemsContentPadding = new System.Windows.Forms.Padding(0, 9, 0, 9);
             this.bsView.Location = new System.Drawing.Point(0, 25);
             this.bsView.Name = "bsView";
-            this.bsView.SelectedTab = this.bsVHumanResource;
-            this.bsView.SelectedTabIndex = 4;
+            this.bsView.SelectedTab = this.bsVInventory;
+            this.bsView.SelectedTabIndex = 3;
             this.bsView.Size = new System.Drawing.Size(628, 423);
             this.bsView.TabIndex = 0;
             this.bsView.Text = "backstageViewControl1";
@@ -517,7 +517,7 @@
             this.btnOS_Stockfit.Size = new System.Drawing.Size(245, 90);
             this.btnOS_Stockfit.TabIndex = 4;
             this.btnOS_Stockfit.Tag = "11";
-            this.btnOS_Stockfit.Text = "OS - Stockfit\r\nInventory Tracking\r\n";
+            this.btnOS_Stockfit.Text = "Bottom Inventory\r\nSet Analysis\r\n";
             this.btnOS_Stockfit.Click += new System.EventHandler(this.btnItem_Click);
             // 
             // backstageViewClientControl5
@@ -771,6 +771,7 @@
             this.bsVInventory.GlyphHorizontalAlignment = DevExpress.Utils.Drawing.ItemHorizontalAlignment.Left;
             this.bsVInventory.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
             this.bsVInventory.Name = "bsVInventory";
+            this.bsVInventory.Selected = true;
             this.bsVInventory.ItemPressed += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.bsV_ItemPressed);
             // 
             // bsVHumanResource
@@ -802,7 +803,6 @@
             this.bsVHumanResource.GlyphHorizontalAlignment = DevExpress.Utils.Drawing.ItemHorizontalAlignment.Left;
             this.bsVHumanResource.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
             this.bsVHumanResource.Name = "bsVHumanResource";
-            this.bsVHumanResource.Selected = true;
             this.bsVHumanResource.ItemPressed += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.bsV_ItemPressed);
             // 
             // UC_MENU_OS_V2
@@ -855,9 +855,5 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton btnTOPO;
-
-
-
-
     }
 }

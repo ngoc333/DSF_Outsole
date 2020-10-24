@@ -47,8 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\AxInterop.FPUSpreadADO.dll</HintPath>
     </Reference>
-    <Reference Include="COM">
-      <HintPath>..\COM ORA\COM.dll</HintPath>
+    <Reference Include="COM, Version=1.0.7378.15998, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\debug\COM.DLL</HintPath>
     </Reference>
     <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -246,6 +247,12 @@
     </Compile>
     <Compile Include="Inventory\FORM_SMT_OS_LEADTIME_YEAR.designer.cs">
       <DependentUpon>FORM_SMT_OS_LEADTIME_YEAR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\FRM_BOTTOM_INV_SET_ANALYSIS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\FRM_BOTTOM_INV_SET_ANALYSIS.designer.cs">
+      <DependentUpon>FRM_BOTTOM_INV_SET_ANALYSIS.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory\FRM_SMT_OS_FSS_INVENTORY.cs">
       <SubType>Form</SubType>
@@ -537,6 +544,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory\FORM_SMT_OS_LEADTIME_YEAR.resx">
       <DependentUpon>FORM_SMT_OS_LEADTIME_YEAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\FRM_BOTTOM_INV_SET_ANALYSIS.resx">
+      <DependentUpon>FRM_BOTTOM_INV_SET_ANALYSIS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory\FRM_SMT_OS_FSS_INVENTORY.resx">
       <DependentUpon>FRM_SMT_OS_FSS_INVENTORY.cs</DependentUpon>

@@ -302,10 +302,10 @@ namespace OS_DSF
                         F = OS_INV;
                         break;
                     case 11:
-                        fc1 = Application.OpenForms["FRM_SMT_OS_FSS_INVENTORY"];
+                        fc1 = Application.OpenForms["FRM_BOTTOM_INV_SET_ANALYSIS"];
                         if (fc1 != null)
                             fc1.Close();
-                        FRM_SMT_OS_FSS_INVENTORY OS_FSS_INV = new FRM_SMT_OS_FSS_INVENTORY();
+                        FRM_BOTTOM_INV_SET_ANALYSIS OS_FSS_INV = new FRM_BOTTOM_INV_SET_ANALYSIS();
                         F = OS_FSS_INV;
                         break;
                         break;
