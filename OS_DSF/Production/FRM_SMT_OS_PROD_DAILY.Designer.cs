@@ -174,7 +174,7 @@
             // 
             this.dtpDate.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtpDate.EditValue = new System.DateTime(2017, 12, 15, 16, 0, 56, 917);
-            this.dtpDate.Location = new System.Drawing.Point(156, 11);
+            this.dtpDate.Location = new System.Drawing.Point(156, 10);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.dtpDate.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 23F, System.Drawing.FontStyle.Bold);
@@ -298,7 +298,7 @@
             this.label1.BackColor = System.Drawing.Color.DodgerBlue;
             this.label1.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(7, 11);
+            this.label1.Location = new System.Drawing.Point(7, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 49);
             this.label1.TabIndex = 17;
@@ -311,10 +311,10 @@
             gridLevelNode1.RelationName = "Level1";
             this.grdView.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.grdView.Location = new System.Drawing.Point(0, 140);
+            this.grdView.Location = new System.Drawing.Point(0, 123);
             this.grdView.MainView = this.gvwView;
             this.grdView.Name = "grdView";
-            this.grdView.Size = new System.Drawing.Size(1920, 840);
+            this.grdView.Size = new System.Drawing.Size(1920, 857);
             this.grdView.TabIndex = 16;
             this.grdView.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwView});
@@ -1162,7 +1162,7 @@
             this.lbl3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl3.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl3.ForeColor = System.Drawing.Color.White;
-            this.lbl3.Location = new System.Drawing.Point(1691, 68);
+            this.lbl3.Location = new System.Drawing.Point(1691, 67);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(130, 49);
             this.lbl3.TabIndex = 6;
@@ -1175,7 +1175,7 @@
             this.lbl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl2.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl2.ForeColor = System.Drawing.Color.Black;
-            this.lbl2.Location = new System.Drawing.Point(1555, 68);
+            this.lbl2.Location = new System.Drawing.Point(1555, 67);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(130, 49);
             this.lbl2.TabIndex = 6;
@@ -1188,7 +1188,7 @@
             this.lbl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.ForeColor = System.Drawing.Color.White;
-            this.lbl1.Location = new System.Drawing.Point(1419, 68);
+            this.lbl1.Location = new System.Drawing.Point(1419, 67);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(130, 49);
             this.lbl1.TabIndex = 6;
@@ -1206,7 +1206,7 @@
             this.a1Panel4.GradientStartColor = System.Drawing.Color.White;
             this.a1Panel4.Image = null;
             this.a1Panel4.ImageLocation = new System.Drawing.Point(4, 4);
-            this.a1Panel4.Location = new System.Drawing.Point(508, 68);
+            this.a1Panel4.Location = new System.Drawing.Point(508, 67);
             this.a1Panel4.Name = "a1Panel4";
             this.a1Panel4.RoundCornerRadius = 1;
             this.a1Panel4.ShadowOffSet = 0;
@@ -1230,7 +1230,7 @@
             this.label5.BackColor = System.Drawing.Color.DodgerBlue;
             this.label5.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(359, 68);
+            this.label5.Location = new System.Drawing.Point(359, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 49);
             this.label5.TabIndex = 4;
@@ -1248,7 +1248,7 @@
             this.a1Panel3.GradientStartColor = System.Drawing.Color.White;
             this.a1Panel3.Image = null;
             this.a1Panel3.ImageLocation = new System.Drawing.Point(4, 4);
-            this.a1Panel3.Location = new System.Drawing.Point(1213, 68);
+            this.a1Panel3.Location = new System.Drawing.Point(1213, 67);
             this.a1Panel3.Name = "a1Panel3";
             this.a1Panel3.RoundCornerRadius = 1;
             this.a1Panel3.ShadowOffSet = 0;
@@ -1278,7 +1278,7 @@
             this.a1Panel2.GradientStartColor = System.Drawing.Color.White;
             this.a1Panel2.Image = null;
             this.a1Panel2.ImageLocation = new System.Drawing.Point(4, 4);
-            this.a1Panel2.Location = new System.Drawing.Point(861, 68);
+            this.a1Panel2.Location = new System.Drawing.Point(861, 67);
             this.a1Panel2.Name = "a1Panel2";
             this.a1Panel2.RoundCornerRadius = 1;
             this.a1Panel2.ShadowOffSet = 0;
@@ -1309,7 +1309,7 @@
             this.a1Panel1.GradientStartColor = System.Drawing.Color.White;
             this.a1Panel1.Image = null;
             this.a1Panel1.ImageLocation = new System.Drawing.Point(4, 4);
-            this.a1Panel1.Location = new System.Drawing.Point(155, 68);
+            this.a1Panel1.Location = new System.Drawing.Point(155, 67);
             this.a1Panel1.Name = "a1Panel1";
             this.a1Panel1.RoundCornerRadius = 1;
             this.a1Panel1.ShadowOffSet = 0;
@@ -1333,7 +1333,7 @@
             this.label4.BackColor = System.Drawing.Color.DodgerBlue;
             this.label4.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(1064, 68);
+            this.label4.Location = new System.Drawing.Point(1064, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(148, 49);
             this.label4.TabIndex = 2;
@@ -1345,7 +1345,7 @@
             this.label3.BackColor = System.Drawing.Color.DodgerBlue;
             this.label3.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(712, 68);
+            this.label3.Location = new System.Drawing.Point(712, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 49);
             this.label3.TabIndex = 2;
@@ -1357,7 +1357,7 @@
             this.label2.BackColor = System.Drawing.Color.DodgerBlue;
             this.label2.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 68);
+            this.label2.Location = new System.Drawing.Point(6, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 49);
             this.label2.TabIndex = 2;
