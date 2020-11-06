@@ -357,6 +357,7 @@ namespace OS_DSF
                 Pen pen_vertical = new Pen(Color.Blue, 4F);
                 Pen line = new Pen(Color.White, 3F);
                 bool boBorder = false;
+                if (e.Band == null) return;
                 string[] ls = e.Band.Caption.Split('\n');
 
                 if (e.Band.HasChildren)
