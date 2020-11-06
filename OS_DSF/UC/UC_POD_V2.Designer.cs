@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGauges.Core.Model.ArcScaleRange arcScaleRange4 = new DevExpress.XtraGauges.Core.Model.ArcScaleRange();
-            DevExpress.XtraGauges.Core.Model.ArcScaleRange arcScaleRange5 = new DevExpress.XtraGauges.Core.Model.ArcScaleRange();
-            DevExpress.XtraGauges.Core.Model.ArcScaleRange arcScaleRange6 = new DevExpress.XtraGauges.Core.Model.ArcScaleRange();
+            DevExpress.XtraGauges.Core.Model.ArcScaleRange arcScaleRange1 = new DevExpress.XtraGauges.Core.Model.ArcScaleRange();
+            DevExpress.XtraGauges.Core.Model.ArcScaleRange arcScaleRange2 = new DevExpress.XtraGauges.Core.Model.ArcScaleRange();
+            DevExpress.XtraGauges.Core.Model.ArcScaleRange arcScaleRange3 = new DevExpress.XtraGauges.Core.Model.ArcScaleRange();
             this.lblTitle = new OS_DSF.LabelGradient();
             this.arcScaleSpindleCapComponent1 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleSpindleCapComponent();
             this.ascPOD = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent();
@@ -39,9 +39,9 @@
             this.labelComponent1 = new DevExpress.XtraGauges.Win.Base.LabelComponent();
             this.circularGauge7 = new DevExpress.XtraGauges.Win.Gauges.Circular.CircularGauge();
             this.groupBoxEx1 = new OS_DSF.Addons.GroupBoxEx();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblYellow = new System.Windows.Forms.Label();
+            this.lblRed = new System.Windows.Forms.Label();
+            this.lblGreen = new System.Windows.Forms.Label();
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.cGauge1 = new DevExpress.XtraGauges.Win.Gauges.Circular.CircularGauge();
             this.arcScaleBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent();
@@ -109,30 +109,30 @@
             this.ascPOD.Name = "scale1";
             this.ascPOD.RadiusX = 72F;
             this.ascPOD.RadiusY = 72F;
-            arcScaleRange4.AppearanceRange.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Red");
-            arcScaleRange4.EndThickness = 6F;
-            arcScaleRange4.EndValue = 33F;
-            arcScaleRange4.Name = "Range0";
-            arcScaleRange4.ShapeOffset = 29F;
-            arcScaleRange4.StartThickness = 6F;
-            arcScaleRange5.AppearanceRange.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Yellow");
-            arcScaleRange5.EndThickness = 6F;
-            arcScaleRange5.EndValue = 66F;
-            arcScaleRange5.Name = "Range1";
-            arcScaleRange5.ShapeOffset = 29F;
-            arcScaleRange5.StartThickness = 6F;
-            arcScaleRange5.StartValue = 33F;
-            arcScaleRange6.AppearanceRange.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#00C000");
-            arcScaleRange6.EndThickness = 6F;
-            arcScaleRange6.EndValue = 100F;
-            arcScaleRange6.Name = "Range2";
-            arcScaleRange6.ShapeOffset = 29F;
-            arcScaleRange6.StartThickness = 6F;
-            arcScaleRange6.StartValue = 66F;
+            arcScaleRange1.AppearanceRange.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Red");
+            arcScaleRange1.EndThickness = 6F;
+            arcScaleRange1.EndValue = 33F;
+            arcScaleRange1.Name = "Range0";
+            arcScaleRange1.ShapeOffset = 29F;
+            arcScaleRange1.StartThickness = 6F;
+            arcScaleRange2.AppearanceRange.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Yellow");
+            arcScaleRange2.EndThickness = 6F;
+            arcScaleRange2.EndValue = 66F;
+            arcScaleRange2.Name = "Range1";
+            arcScaleRange2.ShapeOffset = 29F;
+            arcScaleRange2.StartThickness = 6F;
+            arcScaleRange2.StartValue = 33F;
+            arcScaleRange3.AppearanceRange.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#00C000");
+            arcScaleRange3.EndThickness = 6F;
+            arcScaleRange3.EndValue = 100F;
+            arcScaleRange3.Name = "Range2";
+            arcScaleRange3.ShapeOffset = 29F;
+            arcScaleRange3.StartThickness = 6F;
+            arcScaleRange3.StartValue = 66F;
             this.ascPOD.Ranges.AddRange(new DevExpress.XtraGauges.Core.Model.IRange[] {
-            arcScaleRange4,
-            arcScaleRange5,
-            arcScaleRange6});
+            arcScaleRange1,
+            arcScaleRange2,
+            arcScaleRange3});
             this.ascPOD.StartAngle = -180F;
             this.ascPOD.Value = 22F;
             // 
@@ -177,9 +177,9 @@
             // groupBoxEx1
             // 
             this.groupBoxEx1.BackgroundPanelImage = null;
-            this.groupBoxEx1.Controls.Add(this.label4);
-            this.groupBoxEx1.Controls.Add(this.label1);
-            this.groupBoxEx1.Controls.Add(this.label3);
+            this.groupBoxEx1.Controls.Add(this.lblYellow);
+            this.groupBoxEx1.Controls.Add(this.lblRed);
+            this.groupBoxEx1.Controls.Add(this.lblGreen);
             this.groupBoxEx1.Controls.Add(this.gaugeControl1);
             this.groupBoxEx1.DrawGroupBorder = true;
             this.groupBoxEx1.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
@@ -197,42 +197,42 @@
             this.groupBoxEx1.TextBorderColor = System.Drawing.Color.DarkTurquoise;
             this.groupBoxEx1.TextBorderWith = 1F;
             // 
-            // label4
+            // lblYellow
             // 
-            this.label4.BackColor = System.Drawing.Color.Yellow;
-            this.label4.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(355, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 32);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "160-163";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.lblYellow.BackColor = System.Drawing.Color.Yellow;
+            this.lblYellow.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblYellow.ForeColor = System.Drawing.Color.Black;
+            this.lblYellow.Location = new System.Drawing.Point(355, 6);
+            this.lblYellow.Name = "lblYellow";
+            this.lblYellow.Size = new System.Drawing.Size(126, 32);
+            this.lblYellow.TabIndex = 2;
+            this.lblYellow.Text = "160-163";
+            this.lblYellow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblYellow.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label1
+            // lblRed
             // 
-            this.label1.BackColor = System.Drawing.Color.Red;
-            this.label1.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(487, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 32);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "< 160";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRed.BackColor = System.Drawing.Color.Red;
+            this.lblRed.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblRed.ForeColor = System.Drawing.Color.White;
+            this.lblRed.Location = new System.Drawing.Point(487, 6);
+            this.lblRed.Name = "lblRed";
+            this.lblRed.Size = new System.Drawing.Size(126, 32);
+            this.lblRed.TabIndex = 3;
+            this.lblRed.Text = "< 160";
+            this.lblRed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // lblGreen
             // 
-            this.label3.BackColor = System.Drawing.Color.Green;
-            this.label3.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(222, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 32);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "> 163";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblGreen.BackColor = System.Drawing.Color.Green;
+            this.lblGreen.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblGreen.ForeColor = System.Drawing.Color.White;
+            this.lblGreen.Location = new System.Drawing.Point(222, 6);
+            this.lblGreen.Name = "lblGreen";
+            this.lblGreen.Size = new System.Drawing.Size(126, 32);
+            this.lblGreen.TabIndex = 3;
+            this.lblGreen.Text = "> 163";
+            this.lblGreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gaugeControl1
             // 
@@ -366,9 +366,9 @@
         private DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent arcScaleComponent1;
         private DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleNeedleComponent arcScaleNeedleComponent2;
         private DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleSpindleCapComponent arcScaleSpindleCapComponent2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblYellow;
+        private System.Windows.Forms.Label lblGreen;
+        private System.Windows.Forms.Label lblRed;
         private DevExpress.XtraGauges.Win.Base.LabelComponent labelComponent2;
     }
 }

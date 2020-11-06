@@ -26,29 +26,31 @@ namespace OS_DSF.UC
                 arcScaleComponent1.EasingMode = EasingMode.EaseInOut;
                 arcScaleComponent1.EasingFunction = new ElasticEase();
                 arcScaleComponent1.Value = 0;
+                int iRedQty = Convert.ToInt32(dt.Rows[0]["red_qty"]);
+                int iYellewQty = Convert.ToInt32(dt.Rows[0]["yellow_qty"]);
+                lblGreen.Text = ">" + iYellewQty.ToString();
 
-               // lblGreen.Text = "Rate >" + Convert.ToInt32(dt.Rows[0]["yellow_qty"]).ToString()+"%";
+                lblYellow.Text = iRedQty + " ~ " + iYellewQty.ToString()+"";
 
-               // lblYellow.Text = "Rate >" + Convert.ToInt32(dt.Rows[0]["red_qty"]) + "% ~ " + Convert.ToInt32(dt.Rows[0]["yellow_qty"]).ToString()+"%";
-
-               // lblRed.Text = "Rate <" + Convert.ToInt32(dt.Rows[0]["red_qty"]).ToString()+"%";
+                lblRed.Text = "<" + iRedQty.ToString();
                 //arcScaleComponent1.Ranges[0].EndValue = ascPOD.Ranges[1].StartValue = Convert.ToInt32(dt.Rows[0]["red_qty"]);
 
                 //arcScaleComponent1.Ranges[1].EndValue = ascPOD.Ranges[2].StartValue = Convert.ToInt32(dt.Rows[0]["yellow_qty"]);
                 //arcScaleComponent1.Ranges[2].EndValue = Convert.ToInt32(dt.Rows[0]["MAX_QTY"]);
                 //arcScaleComponent1.MaxValue = Convert.ToInt32(dt.Rows[0]["MAX_QTY"]);
 
-                arcScaleComponent1.EnableAnimation = true;
-                arcScaleComponent1.EasingMode = EasingMode.EaseInOut;
-                arcScaleComponent1.EasingFunction = new BackEase();
+                //arcScaleComponent1.EnableAnimation = true;
+                //arcScaleComponent1.EasingMode = EasingMode.EaseInOut;
+                //arcScaleComponent1.EasingFunction = new BackEase();
                 string strvalue = dt.Rows[0]["QTY"].ToString() == "" ? "0" : dt.Rows[0]["QTY"].ToString();
                 arcScaleComponent1.Value = Convert.ToSingle(strvalue);
                 labelComponent1.Text = Convert.ToDouble(strvalue).ToString("#.0");
                 //arcScaleComponent1.MinValue = 0;
                 //arcScaleComponent1.Ranges[0].StartValue = 0;
 
+                
                 DevExpress.XtraGauges.Core.Model.ArcScaleRange arcScaleRange = new DevExpress.XtraGauges.Core.Model.ArcScaleRange();
-                if (Convert.ToSingle(strvalue) > 163)
+                if (Convert.ToSingle(strvalue) > iYellewQty)
                 {
                     arcScaleRange.AppearanceRange.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Green");
                     arcScaleRange.EndValue = Convert.ToSingle(strvalue);
@@ -61,7 +63,7 @@ namespace OS_DSF.UC
                     //labelComponent2.AppearanceText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:White");
                     //labelComponent2.AppearanceBackground.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Green");
                 }
-                else if (Convert.ToSingle(strvalue) >= 160 && Convert.ToSingle(strvalue) <= 163)
+                else if (Convert.ToSingle(strvalue) >= iRedQty && Convert.ToSingle(strvalue) <= iYellewQty)
                 {
                     arcScaleRange.AppearanceRange.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Yellow");
                     arcScaleRange.EndValue = Convert.ToSingle(strvalue);
@@ -88,8 +90,10 @@ namespace OS_DSF.UC
                     //labelComponent2.AppearanceText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:White");
                     //labelComponent2.AppearanceBackground.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Red");
                 }
+                
             }
-            catch { }
+            catch (Exception ex)
+            { }
         }
 
         private void label4_Click(object sender, EventArgs e)
