@@ -57,6 +57,9 @@
             this.lbl_Shift3 = new System.Windows.Forms.Label();
             this.lbl_Shift2 = new System.Windows.Forms.Label();
             this.pnShift = new System.Windows.Forms.Panel();
+            this.lbl_dif3 = new System.Windows.Forms.Label();
+            this.lbl_dif2 = new System.Windows.Forms.Label();
+            this.lbl_dif1 = new System.Windows.Forms.Label();
             this.dtpDate = new DevExpress.XtraEditors.DateEdit();
             this.axGrid = new AxFPUSpreadADO.AxfpSpread();
             this.pnShift.SuspendLayout();
@@ -107,12 +110,13 @@
             this.label6.BackColor = System.Drawing.Color.Yellow;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(921, 108);
+            this.label6.Location = new System.Drawing.Point(927, 112);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(267, 31);
+            this.label6.Size = new System.Drawing.Size(202, 31);
             this.label6.TabIndex = 690;
             this.label6.Text = "Difference Plan";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label6.Visible = false;
             // 
             // label1
             // 
@@ -247,13 +251,52 @@
             // 
             // pnShift
             // 
+            this.pnShift.Controls.Add(this.lbl_dif3);
+            this.pnShift.Controls.Add(this.lbl_dif2);
+            this.pnShift.Controls.Add(this.lbl_dif1);
             this.pnShift.Controls.Add(this.lbl_Shift2);
             this.pnShift.Controls.Add(this.lbl_Shift1);
             this.pnShift.Controls.Add(this.lbl_Shift3);
             this.pnShift.Location = new System.Drawing.Point(250, 105);
             this.pnShift.Name = "pnShift";
-            this.pnShift.Size = new System.Drawing.Size(671, 63);
+            this.pnShift.Size = new System.Drawing.Size(671, 88);
             this.pnShift.TabIndex = 707;
+            // 
+            // lbl_dif3
+            // 
+            this.lbl_dif3.BackColor = System.Drawing.Color.White;
+            this.lbl_dif3.Font = new System.Drawing.Font("Calibri", 20.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_dif3.ForeColor = System.Drawing.Color.Blue;
+            this.lbl_dif3.Location = new System.Drawing.Point(432, 52);
+            this.lbl_dif3.Name = "lbl_dif3";
+            this.lbl_dif3.Size = new System.Drawing.Size(203, 31);
+            this.lbl_dif3.TabIndex = 708;
+            this.lbl_dif3.Text = "Difference Plan";
+            this.lbl_dif3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbl_dif2
+            // 
+            this.lbl_dif2.BackColor = System.Drawing.Color.White;
+            this.lbl_dif2.Font = new System.Drawing.Font("Calibri", 20.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_dif2.ForeColor = System.Drawing.Color.Blue;
+            this.lbl_dif2.Location = new System.Drawing.Point(228, 51);
+            this.lbl_dif2.Name = "lbl_dif2";
+            this.lbl_dif2.Size = new System.Drawing.Size(203, 31);
+            this.lbl_dif2.TabIndex = 707;
+            this.lbl_dif2.Text = "Difference Plan";
+            this.lbl_dif2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbl_dif1
+            // 
+            this.lbl_dif1.BackColor = System.Drawing.Color.White;
+            this.lbl_dif1.Font = new System.Drawing.Font("Calibri", 20.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_dif1.ForeColor = System.Drawing.Color.Blue;
+            this.lbl_dif1.Location = new System.Drawing.Point(23, 51);
+            this.lbl_dif1.Name = "lbl_dif1";
+            this.lbl_dif1.Size = new System.Drawing.Size(203, 31);
+            this.lbl_dif1.TabIndex = 706;
+            this.lbl_dif1.Text = "Difference Plan";
+            this.lbl_dif1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // dtpDate
             // 
@@ -346,12 +389,12 @@
             this.Controls.Add(this.pnShift);
             this.Controls.Add(this.pnMenu);
             this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblPH1);
             this.Controls.Add(this.lbl_Actual);
             this.Controls.Add(this.lbl_Plan);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblPH3);
             this.Controls.Add(this.lblPH2);
             this.Controls.Add(this.axGrid);
@@ -390,5 +433,8 @@
         private System.Windows.Forms.Label lbl_Shift2;
         private System.Windows.Forms.Panel pnShift;
         private DevExpress.XtraEditors.DateEdit dtpDate;
+        private System.Windows.Forms.Label lbl_dif3;
+        private System.Windows.Forms.Label lbl_dif2;
+        private System.Windows.Forms.Label lbl_dif1;
     }
 }

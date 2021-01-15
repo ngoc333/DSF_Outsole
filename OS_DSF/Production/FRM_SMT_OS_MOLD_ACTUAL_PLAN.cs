@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraGauges.Core.Drawing;
 using System;
+using System.CodeDom;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -22,7 +23,7 @@ namespace OS_DSF
         }
 
         string _shift = "1";
-
+        bool _loadDif = false;
         
         private void addUC()
         {
@@ -99,15 +100,79 @@ namespace OS_DSF
                 lbl_Plan.Text = "Total Plan: " + iPlan.ToString();
                 lbl_Actual.Text = "Total Actual: " + iActual.ToString();
 
-                //  DataTable dt = _dt_layout.Select("MOLD_SIZE_CD <>''").CopyToDataTable();
+                if (_shift == "1")
+                {
+                    lbl_dif1.Text =  ((double)iYellow / iPlan * 100.0).ToString("###,##0.#") + "%";
+                }
+                else if (_shift == "2")
+                {
+                    lbl_dif2.Text = ((double)iYellow / iPlan * 100.0).ToString("###,##0.#") + "%";
+                }
+                else
+                {
+                    lbl_dif3.Text = ((double)iYellow / iPlan * 100.0).ToString("###,##0.#") + "%";
+                }
 
-                label6.Text = "Difference Plan: " + ((double)iYellow / iPlan * 100.0).ToString("###,###.#") + "%";
+                if (!_loadDif) return;
+                
+
+                if (_shift == "1")
+                {
+                    DataTable dtShif2 = OS_DSF.Addons.Database.SEL_OS_APS_PLAN_ACTUAL("20", dtpDate.DateTime.ToString("yyyyMMdd"), "2");
+                    SetTextDif(dtShif2, lbl_dif2);
+
+                    DataTable dtShif3 = OS_DSF.Addons.Database.SEL_OS_APS_PLAN_ACTUAL("20", dtpDate.DateTime.ToString("yyyyMMdd"), "3");
+                    SetTextDif(dtShif3, lbl_dif3);
+
+                }
+                else if (_shift == "2")
+                {
+
+                    DataTable dtShif1 = OS_DSF.Addons.Database.SEL_OS_APS_PLAN_ACTUAL("20", dtpDate.DateTime.ToString("yyyyMMdd"), "1");
+                    SetTextDif(dtShif1, lbl_dif1);
+
+                    DataTable dtShif3 = OS_DSF.Addons.Database.SEL_OS_APS_PLAN_ACTUAL("20", dtpDate.DateTime.ToString("yyyyMMdd"), "3");
+                    SetTextDif(dtShif3, lbl_dif3);
+                }
+                else
+                {
+                    DataTable dtShif2 = OS_DSF.Addons.Database.SEL_OS_APS_PLAN_ACTUAL("20", dtpDate.DateTime.ToString("yyyyMMdd"), "2");
+                    SetTextDif(dtShif2, lbl_dif2);
+
+                    DataTable dtShif1 = OS_DSF.Addons.Database.SEL_OS_APS_PLAN_ACTUAL("20", dtpDate.DateTime.ToString("yyyyMMdd"), "3");
+                    SetTextDif(dtShif1, lbl_dif1);
+                }
+
+
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
         }
+
+        private void SetTextDif(DataTable dtShift, Label lbl_dif)
+        {
+            try
+            {
+                if(dtShift == null || dtShift.Rows.Count == 0)
+                {
+                    lbl_dif.Text = "";
+                    return;
+                }
+                int iPlan = (int)dtShift.Compute("count(MOLD_SIZE_CD)", "");
+                int iYellow = (int)dtShift.Compute("count(STATUS)", "STATUS = '1'");
+                lbl_dif.Text = ((double)iYellow / iPlan * 100.0).ToString("###,##0.#") + "%";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+       
+
+
+
         private void DisplayGrid(DataTable arg_dt, AxFPUSpreadADO.AxfpSpread arg_grid)
         {
            
@@ -418,15 +483,17 @@ namespace OS_DSF
                 _time++;
                 if (_time == 60)
                 {
-                   // _dt_layout = OS_DSF.Addons.Database.SEL_OS_APS_PLAN_ACTUAL("20", "","");
+                    // _dt_layout = OS_DSF.Addons.Database.SEL_OS_APS_PLAN_ACTUAL("20", "","");
+                    _loadDif = false;
                     loaddata();
                     _time = 0;
                 }
 
                 
             }
-            catch
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex);
             }
         }
 
@@ -436,7 +503,10 @@ namespace OS_DSF
             {
                 if (this.Visible)
                 {
-                    
+                    _isLoad = true;
+                    lbl_dif1.Text = "";
+                    lbl_dif2.Text = "";
+                    lbl_dif3.Text = "";
                     _time = 0;
                     if (Convert.ToInt16(DateTime.Now.ToString("HH")) >= 14 && Convert.ToInt16(DateTime.Now.ToString("HH")) < 22)
                     {
@@ -459,9 +529,16 @@ namespace OS_DSF
                     timer1.Stop();
                 }
                 
+                
             }
-            catch (Exception)
-            {}
+            catch (Exception ex)
+            { 
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                _isLoad = false;
+            }
         }
 
         private void axGrid_BeforeEditMode(object sender, AxFPUSpreadADO._DSpreadEvents_BeforeEditModeEvent e)
@@ -482,11 +559,16 @@ namespace OS_DSF
             Control cmd = (Control)sender;
             foreach (Control ctr in pnShift.Controls)
             {
+                if (!ctr.Name.Contains("lbl_Shift")) continue;
                 if (ctr.Name == cmd.Name)
                 {
                     cmd.BackColor = Color.DodgerBlue;
                     cmd.ForeColor = Color.White;
-                    _shift = cmd.Tag.ToString();                 
+                    _shift = cmd.Tag.ToString();
+                    if (_isLoad)
+                        _loadDif = true;
+                    else
+                        _loadDif = false;
                     loaddata();
                     _time = 0;
                 }
@@ -505,6 +587,7 @@ namespace OS_DSF
         private void dtpDate_EditValueChanged(object sender, EventArgs e)
         {
             if (_isLoad) return;
+            _loadDif = true;
             loaddata();
             _time = 0;
         }
