@@ -177,6 +177,11 @@ namespace OS_DSF
                         if (i > 4)
                         {
                             //gvwView.Columns[i].AppearanceCell.Font = new System.Drawing.Font("Calibri", 13, FontStyle.Regular);
+                            gvwView.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+                            gvwView.Columns[i].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                        }
+                        else if(i==0)
+                        {
                             gvwView.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
                             gvwView.Columns[i].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
                         }
@@ -222,6 +227,7 @@ namespace OS_DSF
         {
             if (e.Column.FieldName.Contains("RATE"))
             {
+                if (e.CellValue == null) return;
                 if (e.CellValue.ToString().Replace("%","") != "")
                 {
                     if (Convert.ToDouble(e.CellValue.ToString().Replace("%", "").Trim()) > i_max)

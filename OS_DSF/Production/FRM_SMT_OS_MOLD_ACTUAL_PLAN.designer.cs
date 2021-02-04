@@ -137,7 +137,7 @@
             this.lbl_Actual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Actual.Font = new System.Drawing.Font("Calibri", 18.75F, System.Drawing.FontStyle.Bold);
             this.lbl_Actual.ForeColor = System.Drawing.Color.White;
-            this.lbl_Actual.Location = new System.Drawing.Point(1192, 107);
+            this.lbl_Actual.Location = new System.Drawing.Point(1186, 139);
             this.lbl_Actual.Name = "lbl_Actual";
             this.lbl_Actual.Size = new System.Drawing.Size(225, 32);
             this.lbl_Actual.TabIndex = 695;
@@ -149,7 +149,7 @@
             this.lbl_Plan.BackColor = System.Drawing.Color.Green;
             this.lbl_Plan.Font = new System.Drawing.Font("Calibri", 18.75F, System.Drawing.FontStyle.Bold);
             this.lbl_Plan.ForeColor = System.Drawing.Color.White;
-            this.lbl_Plan.Location = new System.Drawing.Point(1192, 140);
+            this.lbl_Plan.Location = new System.Drawing.Point(1186, 108);
             this.lbl_Plan.Name = "lbl_Plan";
             this.lbl_Plan.Size = new System.Drawing.Size(225, 30);
             this.lbl_Plan.TabIndex = 694;
