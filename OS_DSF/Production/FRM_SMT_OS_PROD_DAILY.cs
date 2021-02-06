@@ -23,6 +23,9 @@ namespace OS_DSF
         string str_op = "";
         string strCol = "";
 
+        bool _isLoad = true;
+        
+
         #region db
         Addons.Database db = new Addons.Database();
         #endregion
@@ -32,7 +35,8 @@ namespace OS_DSF
         #endregion
 
         private void FRM_ROLL_SLABTEST_MON_Load(object sender, EventArgs e)
-        {            
+        {
+            _isLoad = true;
             timer1.Enabled = true;
             timer1.Start();
             timer1.Interval = 1000;
@@ -411,6 +415,7 @@ namespace OS_DSF
 
         private void dtpDate_EditValueChanged(object sender, EventArgs e)
         {
+            if (_isLoad) return;
             BindingData("OSP");
         }
 
@@ -434,8 +439,10 @@ namespace OS_DSF
             {
                 if (this.Visible)
                 {
+                    _isLoad = true;
                     timer1.Start();
                     cnt = 40;
+                    _isLoad = false;
                 }
                 else
                     timer1.Stop();
