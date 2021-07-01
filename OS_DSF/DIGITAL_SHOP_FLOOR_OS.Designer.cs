@@ -41,7 +41,6 @@
             this.lblDateTime = new System.Windows.Forms.Label();
             this.lblTitle2 = new System.Windows.Forms.Label();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::OS_DSF.WaitForm1), true, true);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pic_under = new System.Windows.Forms.PictureBox();
             this.pnHeader.SuspendLayout();
@@ -226,10 +225,6 @@
             this.tblMain.Size = new System.Drawing.Size(1904, 942);
             this.tblMain.TabIndex = 2;
             // 
-            // splashScreenManager1
-            // 
-            this.splashScreenManager1.ClosingDelay = 500;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -257,7 +252,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DIGITAL_SHOP_FLOOR_OS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DIGITAL_SHOP_FLOOR_OS";
+            this.Text = " ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DIGITAL_SHOP_FLOOR_OS_FormClosing);
             this.Load += new System.EventHandler(this.DIGITAL_SHOP_FLOOR_OS_Load);

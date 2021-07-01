@@ -577,32 +577,35 @@ namespace OS_DSF.Addons
             }
         }
 
-        public DataTable SEL_OS_PROD_DAILY(string ARG_QTYPE, string ARG_OP)
+        public DataTable SEL_OS_PROD_DAILY(string ARG_QTYPE, string ARG_OP, string ARG_DATE)
         {
             COM.OraDB MyOraDB = new COM.OraDB();
             DataSet ds_ret;
 
             try
             {
-                string process_name = "MES.PKG_SMT_B_PROD_STATUS.SEL_PRODUCTION_STATUS";
+                string process_name = "MES.PKG_SMT_B_PROD_STATUS.SEL_PRODUCTION_STATUS_V02";
 
-                MyOraDB.ReDim_Parameter(4);
+                MyOraDB.ReDim_Parameter(5);
                 MyOraDB.Process_Name = process_name;
 
                 MyOraDB.Parameter_Name[0] = "V_P_OP";
-                MyOraDB.Parameter_Name[1] = "ARG_FRM_LINE";
-                MyOraDB.Parameter_Name[2] = "ARG_TO_LINE";
-                MyOraDB.Parameter_Name[3] = "OUT_CURSOR";
+                MyOraDB.Parameter_Name[1] = "V_P_DATE";
+                MyOraDB.Parameter_Name[2] = "ARG_FRM_LINE";
+                MyOraDB.Parameter_Name[3] = "ARG_TO_LINE";
+                MyOraDB.Parameter_Name[4] = "OUT_CURSOR";
 
                 MyOraDB.Parameter_Type[0] = (int)OracleType.VarChar;
                 MyOraDB.Parameter_Type[1] = (int)OracleType.VarChar;
                 MyOraDB.Parameter_Type[2] = (int)OracleType.VarChar;
-                MyOraDB.Parameter_Type[3] = (int)OracleType.Cursor;
+                MyOraDB.Parameter_Type[3] = (int)OracleType.VarChar;
+                MyOraDB.Parameter_Type[4] = (int)OracleType.Cursor;
 
                 MyOraDB.Parameter_Values[0] = ARG_OP;
-                MyOraDB.Parameter_Values[1] = "";
+                MyOraDB.Parameter_Values[1] = ARG_DATE;
                 MyOraDB.Parameter_Values[2] = "";
                 MyOraDB.Parameter_Values[3] = "";
+                MyOraDB.Parameter_Values[4] = "";
 
                 MyOraDB.Add_Select_Parameter(true);
                 ds_ret = MyOraDB.Exe_Select_Procedure();
@@ -922,27 +925,33 @@ namespace OS_DSF.Addons
         #endregion
 
         #region Mold APS Plan & Actual
-        public static DataTable SEL_OS_APS_PLAN_ACTUAL(string arg_wh)
+        public static DataTable SEL_OS_APS_PLAN_ACTUAL(string arg_wh, string arg_date, string arg_shift)
         {
             COM.OraDB MyOraDB = new COM.OraDB();
             System.Data.DataSet ds_ret;
-
+            
             try
             {
-                string process_name = "PKG_SPB_MOLD_WMS_V2.SEL_MOLD_APS_ACTUAL";
+                string process_name = "PKG_SPB_MOLD_WMS_V2.SEL_MOLD_APS_ACTUAL_V2";
 
-                MyOraDB.ReDim_Parameter(2);
+                MyOraDB.ReDim_Parameter(4);
                 MyOraDB.Process_Name = process_name;
 
 
                 MyOraDB.Parameter_Name[0] = "ARG_WH_CD";
-                MyOraDB.Parameter_Name[1] = "OUT_CURSOR";
+                MyOraDB.Parameter_Name[1] = "ARG_DATE";
+                MyOraDB.Parameter_Name[2] = "ARG_SHIFT";
+                MyOraDB.Parameter_Name[3] = "OUT_CURSOR";
 
                 MyOraDB.Parameter_Type[0] = (int)OracleType.VarChar;
-                MyOraDB.Parameter_Type[1] = (int)OracleType.Cursor;
+                MyOraDB.Parameter_Type[1] = (int)OracleType.VarChar;
+                MyOraDB.Parameter_Type[2] = (int)OracleType.VarChar;
+                MyOraDB.Parameter_Type[3] = (int)OracleType.Cursor;
 
                 MyOraDB.Parameter_Values[0] = arg_wh;
-                MyOraDB.Parameter_Values[1] = "";
+                MyOraDB.Parameter_Values[1] = arg_date;
+                MyOraDB.Parameter_Values[2] = arg_shift;
+                MyOraDB.Parameter_Values[3] = "";
 
                 MyOraDB.Add_Select_Parameter(true);
 

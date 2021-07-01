@@ -23,6 +23,9 @@ namespace OS_DSF
         string str_op = "";
         string strCol = "";
 
+        bool _isLoad = true;
+        
+
         #region db
         Addons.Database db = new Addons.Database();
         #endregion
@@ -32,11 +35,12 @@ namespace OS_DSF
         #endregion
 
         private void FRM_ROLL_SLABTEST_MON_Load(object sender, EventArgs e)
-        {            
+        {
+            _isLoad = true;
             timer1.Enabled = true;
             timer1.Start();
             timer1.Interval = 1000;
-            
+            dtpDate.DateTime = DateTime.Now;
             pnYMD.Controls.Add(uc);
             uc.OnDWMYClick += DWMYClick;
             uc.YMD_Change(6);
@@ -92,7 +96,7 @@ namespace OS_DSF
             {
                 int n;
                 DataTable dtsource = null;
-                dtsource = db.SEL_OS_PROD_DAILY("H", "");
+                dtsource = db.SEL_OS_PROD_DAILY("H", "","");
                 if (dtsource != null && dtsource.Rows.Count > 0)
                 {
                     string name;
@@ -129,87 +133,105 @@ namespace OS_DSF
 
         private void BindingData(string arg_op)
         {
-            grdView.Refresh();
-            DataTable dtsource = null;
-            dtsource = db.SEL_OS_PROD_DAILY("Q", arg_op);
-            //formatband();
-            DataTable dt = null;
-            if (dtsource == null || dtsource.Rows.Count < 0) return;
-            strCol = dtsource.Rows[0]["COL"].ToString();
-            grdView.DataSource = dtsource.Rows.Count > 0 ? dtsource.Select("MC <> 'TOTAL'", "STT ASC").CopyToDataTable() : dtsource;
-            lblTot_Plan.Text = "0";
-            lblTot_RPlan.Text = "0";
-            lblTot_Act.Text = "0";
-            lblTot_Rate.Text = "0";
-            for (int i = 0; i < gvwView.Columns.Count; i++)
+            try
             {
-                gvwView.Columns[i].OwnerBand.Caption = "";
-            }
-            if (dtsource != null && dtsource.Rows.Count > 0)
-            {
-                lblTot_Plan.Text = dtsource.Rows[0]["TOT_PLAN"].ToString() + " Prs";
-                lblTot_RPlan.Text = dtsource.Rows[0]["TOT_RPLAN"].ToString() + " Prs";
-                lblTot_Act.Text = dtsource.Rows[0]["TOT_ACT"].ToString() + " Prs";
-                lblTot_Rate.Text = dtsource.Rows[0]["TOT_RATE"].ToString();
-
-                i_max = Convert.ToInt32(dtsource.Rows[0]["MAX"].ToString());
-                i_min = Convert.ToInt32(dtsource.Rows[0]["MIN"].ToString());
-                lbl1.Text = ">" + i_max + "%";
-                lbl2.Text = i_min + "% ~ " + i_max + "%";
-                lbl3.Text = "<" + i_min + "%";
-
+                this.Cursor = Cursors.WaitCursor;
+                grdView.Refresh();
+                DataTable dtsource = null;
+                dtsource = db.SEL_OS_PROD_DAILY("Q", arg_op, dtpDate.DateTime.ToString("yyyyMMdd"));
+                //formatband();
+                DataTable dt = null;
+                if (dtsource == null || dtsource.Rows.Count < 0) return;
+                strCol = dtsource.Rows[0]["COL"].ToString();
+                if (dtsource.Select("MC <> 'TOTAL'", "STT ASC").Count() > 0)
+                    grdView.DataSource = dtsource.Rows.Count > 0 ? dtsource.Select("MC <> 'TOTAL'", "STT ASC").CopyToDataTable() : dtsource;
+                else
+                    grdView.DataSource = null;
+                lblTot_Plan.Text = "0";
+                lblTot_RPlan.Text = "0";
+                lblTot_Act.Text = "0";
+                lblTot_Rate.Text = "0";
                 for (int i = 0; i < gvwView.Columns.Count; i++)
                 {
-                    gvwView.Columns[i].OptionsColumn.ReadOnly = true;
-                    gvwView.Columns[i].OptionsColumn.AllowEdit = false;
-                    gvwView.Columns[i].OptionsFilter.AllowFilter = false;
-                    gvwView.Columns[i].OwnerBand.Caption = dtsource.Rows[0][gvwView.Columns[i].FieldName].ToString();
-                    gvwView.Columns[i].OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
-                    gvwView.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-                    gvwView.Columns[i].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-                    gvwView.Columns[i].AppearanceCell.Font = new System.Drawing.Font("Calibri", 16, FontStyle.Regular);
-                    if (i > 4)
+                    gvwView.Columns[i].OwnerBand.Caption = "";
+                }
+                if (dtsource != null && dtsource.Rows.Count > 0)
+                {
+                    lblTot_Plan.Text = dtsource.Rows[0]["TOT_PLAN"].ToString() + " Prs";
+                    lblTot_RPlan.Text = dtsource.Rows[0]["TOT_RPLAN"].ToString() + " Prs";
+                    lblTot_Act.Text = dtsource.Rows[0]["TOT_ACT"].ToString() + " Prs";
+                    lblTot_Rate.Text = dtsource.Rows[0]["TOT_RATE"].ToString();
+
+                    i_max = Convert.ToInt32(dtsource.Rows[0]["MAX"].ToString());
+                    i_min = Convert.ToInt32(dtsource.Rows[0]["MIN"].ToString());
+                    lbl1.Text = ">" + i_max + "%";
+                    lbl2.Text = i_min + "% ~ " + i_max + "%";
+                    lbl3.Text = "<" + i_min + "%";
+
+                    for (int i = 0; i < gvwView.Columns.Count; i++)
                     {
-                        //gvwView.Columns[i].AppearanceCell.Font = new System.Drawing.Font("Calibri", 13, FontStyle.Regular);
+                        gvwView.Columns[i].OptionsColumn.ReadOnly = true;
+                        gvwView.Columns[i].OptionsColumn.AllowEdit = false;
+                        gvwView.Columns[i].OptionsFilter.AllowFilter = false;
+                        gvwView.Columns[i].OwnerBand.Caption = dtsource.Rows[0][gvwView.Columns[i].FieldName].ToString();
+                        gvwView.Columns[i].OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
                         gvwView.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
                         gvwView.Columns[i].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                        gvwView.Columns[i].AppearanceCell.Font = new System.Drawing.Font("Calibri", 16, FontStyle.Regular);
+                        if (i > 4)
+                        {
+                            //gvwView.Columns[i].AppearanceCell.Font = new System.Drawing.Font("Calibri", 13, FontStyle.Regular);
+                            gvwView.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+                            gvwView.Columns[i].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                        }
+                        else if(i==0)
+                        {
+                            gvwView.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                            gvwView.Columns[i].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                        }
+                        else
+                        {
+                            gvwView.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+                            gvwView.Columns[i].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                        }
                     }
-                    else
-                    {
-                        gvwView.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-                        gvwView.Columns[i].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-                    }
+
+                    gvwView.Columns[0].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                    gvwView.Columns[0].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+
                 }
-
-                gvwView.Columns[0].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-                gvwView.Columns[0].AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-
+                //axfpSpread.MaxRows = 2;
+                //if (dtsource != null && dtsource.Rows.Count > 0)
+                //{
+                //    for (int i_row = 0; i_row < dtsource.Rows.Count; i_row++)
+                //    {
+                //        for (int i_col = 0; i_col < dtsource.Columns.Count; i_col++)
+                //        {
+                //            axfpSpread.Col = i_col + 1;
+                //            axfpSpread.Row = i_row + 3;
+                //            axfpSpread.ForeColor = Color.Black;
+                //            //axfpSpread.TypeHAlign= FPUSpreadADO.TypeHAlignConstants.TypeHAlignCenter;
+                //            //axfpSpread.TypeVAlign = FPUSpreadADO.TypeVAlignConstants.TypeVAlignCenter;
+                //            //axfpSpread.Font = new System.Drawing.Font("Calibri", 22, FontStyle.Regular);
+                //            axfpSpread.set_RowHeight(i_row+3, 27);
+                //            axfpSpread.SetText(i_col + 1, i_row + 3, dtsource.Rows[i_row][i_col].ToString());
+                //            //axfpSpread.CellBorderStyle = FPUSpreadADO.CellBorderStyleConstants.CellBorderStyleDot;
+                //        }
+                //    }
+                //}
+                this.Cursor = Cursors.Default;
             }
-            //axfpSpread.MaxRows = 2;
-            //if (dtsource != null && dtsource.Rows.Count > 0)
-            //{
-            //    for (int i_row = 0; i_row < dtsource.Rows.Count; i_row++)
-            //    {
-            //        for (int i_col = 0; i_col < dtsource.Columns.Count; i_col++)
-            //        {
-            //            axfpSpread.Col = i_col + 1;
-            //            axfpSpread.Row = i_row + 3;
-            //            axfpSpread.ForeColor = Color.Black;
-            //            //axfpSpread.TypeHAlign= FPUSpreadADO.TypeHAlignConstants.TypeHAlignCenter;
-            //            //axfpSpread.TypeVAlign = FPUSpreadADO.TypeVAlignConstants.TypeVAlignCenter;
-            //            //axfpSpread.Font = new System.Drawing.Font("Calibri", 22, FontStyle.Regular);
-            //            axfpSpread.set_RowHeight(i_row+3, 27);
-            //            axfpSpread.SetText(i_col + 1, i_row + 3, dtsource.Rows[i_row][i_col].ToString());
-            //            //axfpSpread.CellBorderStyle = FPUSpreadADO.CellBorderStyleConstants.CellBorderStyleDot;
-            //        }
-            //    }
-            //}
+            catch
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         private void gvwView_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             if (e.Column.FieldName.Contains("RATE"))
             {
+                if (e.CellValue == null) return;
                 if (e.CellValue.ToString().Replace("%","") != "")
                 {
                     if (Convert.ToDouble(e.CellValue.ToString().Replace("%", "").Trim()) > i_max)
@@ -345,6 +367,7 @@ namespace OS_DSF
                 Pen pen_vertical = new Pen(Color.Blue, 4F);
                 Pen line = new Pen(Color.White, 3F);
                 bool boBorder = false;
+                if (e.Band == null) return;
                 string[] ls = e.Band.Caption.Split('\n');
 
                 if (e.Band.HasChildren)
@@ -390,6 +413,12 @@ namespace OS_DSF
             }
         }
 
+        private void dtpDate_EditValueChanged(object sender, EventArgs e)
+        {
+            if (_isLoad) return;
+            BindingData("OSP");
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblDateTime.Text = string.Format(DateTime.Now.ToString("yyyy-MM-dd")) + "\n\r" + string.Format(DateTime.Now.ToString("HH:mm:ss"));
@@ -410,8 +439,10 @@ namespace OS_DSF
             {
                 if (this.Visible)
                 {
+                    _isLoad = true;
                     timer1.Start();
                     cnt = 40;
+                    _isLoad = false;
                 }
                 else
                     timer1.Stop();
