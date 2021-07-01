@@ -894,7 +894,7 @@ namespace OS_DSF.Addons
 
             try
             {
-                string process_name = "P_OS_MACHINE_LAYOUT_Q";
+                string process_name = "P_OS_MACHINE_LAYOUT_Q_V2";
 
                 MyOraDB.ReDim_Parameter(2);
                 MyOraDB.Process_Name = process_name;
