@@ -890,25 +890,32 @@ namespace OS_DSF.Addons
             }
         }
 
-        public DataTable GetMainData(string workType)
+        public DataTable GetMainData(string workType, string date, string shift)
         {
             COM.OraDB MyOraDB = new COM.OraDB();
             System.Data.DataSet ds_ret;
 
             try
             {
-                string process_name = "P_OS_MACHINE_LAYOUT_Q_V2";
+                string process_name = "P_OS_MACHINE_LAYOUT_Q_V3";
 
-                MyOraDB.ReDim_Parameter(2);
+                MyOraDB.ReDim_Parameter(4);
                 MyOraDB.Process_Name = process_name;
 
                 MyOraDB.Parameter_Name[0] = "V_P_WORKTYPE";
-                MyOraDB.Parameter_Name[1] = "OUT_CURSOR";
+                MyOraDB.Parameter_Name[1] = "ARG_DATE";
+                MyOraDB.Parameter_Name[2] = "ARG_SHIFT";
+                MyOraDB.Parameter_Name[3] = "OUT_CURSOR";
+
                 MyOraDB.Parameter_Type[0] = (char)OracleType.VarChar;
-                MyOraDB.Parameter_Type[1] = (char)OracleType.Cursor;
+                MyOraDB.Parameter_Type[1] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[2] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[3] = (char)OracleType.Cursor;
 
                 MyOraDB.Parameter_Values[0] = workType;
-                MyOraDB.Parameter_Values[1] = "";
+                MyOraDB.Parameter_Values[1] = date;
+                MyOraDB.Parameter_Values[2] = shift;
+                MyOraDB.Parameter_Values[3] = "";
 
                 MyOraDB.Add_Select_Parameter(true);
                 ds_ret = MyOraDB.Exe_Select_Procedure();

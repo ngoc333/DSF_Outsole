@@ -41,15 +41,15 @@ namespace OS_DSF
         DataTable _dtLayout = null;
         int iPlan = 0, iNoPlan = 0, iNoUse = 0, iMoldChange =0;
         DataTable dtLayout = null;
- 
-    
 
-        
+        string _shift = "1";
+        bool _load_form = true;
+
         //FORM_MOLD_PRODUCTION_POP _pop_change = new FORM_MOLD_PRODUCTION_POP();
         //FORM_MOLD_PRODUCTION_POP_PRE _pop_change_pre = new FORM_MOLD_PRODUCTION_POP_PRE();
-      //  Thread th;
-         
-        
+        //  Thread th;
+
+
 
         #endregion Init
 
@@ -81,7 +81,18 @@ namespace OS_DSF
             this.Bounds = Screen.PrimaryScreen.Bounds;
         }
 
-    
+        private void initForm(string argForm)
+        {
+            if (argForm == "2")
+            {
+               // pnFormType.Visible = false;
+                this.Text = "Mold2";
+                _load_form = false;
+               
+               // pnHeader.BackColor = Color.RoyalBlue;
+            }
+
+        }
 
         #region Binding Data Grid Top
         private void DisplayGridTop(DataTable arg_dt, AxFPUSpreadADO.AxfpSpread arg_grid)
@@ -496,7 +507,7 @@ namespace OS_DSF
         {
             try
             {
-                dtLayout = db.GetMainData("Q");
+                dtLayout = db.GetMainData("Q", dtpDate.DateTime.ToString("yyyyMMdd"),_shift);
                // DataTable dtModel = db.GetMainData("Q1");
 
                 DataTable _dtMachine1 = SEL_APS_PLAN_ACTUAL_OS("Q");
@@ -588,20 +599,26 @@ namespace OS_DSF
 
             try
             {
-                string process_name = "PKG_SPB_MOLD_WMS_V2.SEL_MOLD_PRODUCTION_LAYOUT_OS";
+                string process_name = "PKG_SPB_MOLD_WMS_V2.SEL_MOLD_PROD_LAYOUT_OS_V2";
 
-                MyOraDB.ReDim_Parameter(2);
+                MyOraDB.ReDim_Parameter(4);
                 MyOraDB.Process_Name = process_name;
 
 
                 MyOraDB.Parameter_Name[0] = "ARG_NO";
-                MyOraDB.Parameter_Name[1] = "OUT_CURSOR";
+                MyOraDB.Parameter_Name[1] = "ARG_DATE";
+                MyOraDB.Parameter_Name[2] = "ARG_SHIFT";
+                MyOraDB.Parameter_Name[3] = "OUT_CURSOR";
 
                 MyOraDB.Parameter_Type[0] = (int)OracleType.VarChar;
-                MyOraDB.Parameter_Type[1] = (int)OracleType.Cursor;
+                MyOraDB.Parameter_Type[1] = (int)OracleType.VarChar;
+                MyOraDB.Parameter_Type[2] = (int)OracleType.VarChar;
+                MyOraDB.Parameter_Type[3] = (int)OracleType.Cursor;
 
                 MyOraDB.Parameter_Values[0] = TYPE;
-                MyOraDB.Parameter_Values[1] = "";
+                MyOraDB.Parameter_Values[1] = dtpDate.DateTime.ToString("yyyyMMdd");
+                MyOraDB.Parameter_Values[2] = _shift;
+                MyOraDB.Parameter_Values[3] = "";
 
                 MyOraDB.Add_Select_Parameter(true);
                 ds_ret = MyOraDB.Exe_Select_Procedure();
@@ -750,20 +767,19 @@ namespace OS_DSF
             {
                 if (this.Visible)
                 {
-                    //_time_auto = 10;
-                    //if (_load_form)
-                    //{
+                    dtpDate.EditValue = DateTime.Now;                  
+                    if (_load_form)
+                    {
                         timer1.Start();
-
+                        LoadShift();
                         loaddata();
-                      
-                       // _load_form = false;
-                    //}                 
+                        _load_form = false;
+                    }             
                 }
                 else
-                {
-                   // _load_form = true;
-                    timer1.Stop();
+                {                    
+                    _load_form = true;
+                    timer1.Stop();                    
                 }
                 
             }
@@ -783,6 +799,56 @@ namespace OS_DSF
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void lbl_Shift_Click(object sender, EventArgs e)
+        {
+            Control cmd = (Control)sender;
+            foreach (Control ctr in pnShift.Controls)
+            {
+                if (!ctr.Name.Contains("lbl_Shift")) continue;
+                if (ctr.Name == cmd.Name)
+                {
+                    cmd.BackColor = Color.DodgerBlue;
+                    cmd.ForeColor = Color.White;
+                    _shift = cmd.Tag.ToString();
+
+                    if (!_load_form)
+                    {
+                        loaddata();
+                    }
+
+                    _time = 0;
+                }
+                else
+                {
+                    ctr.BackColor = Color.Gray;
+                    ctr.ForeColor = Color.White;
+                }
+            }
+
+        }
+        private void LoadShift()
+        {
+            if (Convert.ToInt16(DateTime.Now.ToString("HH")) >= 14 && Convert.ToInt16(DateTime.Now.ToString("HH")) < 22)
+            {
+                lbl_Shift_Click(lbl_Shift2, null);
+            }
+            else if (Convert.ToInt16(DateTime.Now.ToString("HH")) >= 6 && Convert.ToInt16(DateTime.Now.ToString("HH")) < 14)
+            {
+                lbl_Shift_Click(lbl_Shift1, null);
+            }
+            else
+            {
+                lbl_Shift_Click(lbl_Shift3, null);
+            }
+        }
+
+        private void dtpDate_EditValueChanged(object sender, EventArgs e)
+        {
+            if (_load_form) return;
+            loaddata();
+            _time = 0;
         }
 
         private void gvwview1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
